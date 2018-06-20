@@ -1,8 +1,3 @@
-
-const player = {
-	playerHand: [],
-};
-
 const game = {
 	cards: 
 	[{name: "Bulbasaur", damage:60}, 
@@ -30,33 +25,25 @@ const game = {
 	roundsWonByPlayer: [],
 	currentRound: [],
 	computerHand: [],
-
-			
-	
+	playerHand: [],
 
 
-	deal() {
-		let randomNumber = Math.floor(Math.random() * this.cards.length);
-		let dealCard = this.cards.splice(randomNumber, 1)[0];
-		console.log("dealing card");
-		return this.dealCard; 
-		
+	dealCards() {
+		for (let i = 0; i < 3; i ++) { 
+			let randomNumber = Math.floor(Math.random() * this.cards.length);
+			let dealCard = this.cards.splice(randomNumber, 1)[0];
+			this.playerHand.push(dealCard);
 		}
+		
+		for (let i = 0; i < 3; i ++) { 
+			let randomNumber = Math.floor(Math.random() * this.cards.length);
+			let dealCard = this.cards.splice(randomNumber, 1)[0];
+			this.computerHand.push(dealCard);
+		};
 	}
-	
+};
 
-game.deal();
-
-	// dealCards() {
-	// 	console.log("dealing out hands");
-	// 	for (let i = 0; i < 3; i ++) {
-	// 	let playerCard = this.deal();
-	// 	let computerCard = this.deal();
-	// 	player.playerHand.push(playerCard);
-	// 	this.computerHand.push(computerCard);
-
-	// }
-	// },
+game.dealCards();
 
 	// battle () {
 	// 	if()
