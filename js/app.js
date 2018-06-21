@@ -44,12 +44,13 @@ const game = {
 	},
 
 
-	battle() { // how to call on a function inside of a function?
+	battle() { 
 		console.log("the battle begins");
 		this.dealCards();
 			let playerCard = this.playerHand.splice(0, 1)[0];
 			console.log(playerCard);
 			let computerCard = this.computerHand.splice(0, 1)[0];
+			console.log(computerCard);
 			if (playerCard.damage > computerCard.damage) {
 				console.log("player wins!")
 				this.playerPoint ++;
@@ -60,29 +61,26 @@ const game = {
 				console.log(this.computerPoint);
 			};
 
+		},
+
+		round() {
+			this.battle();
+			this.battle();
+			this.battle();
+				if (this.playerPoint > this.computerPoint) {
+					console.log("Player takes it all!")
+				} else if(this.playerPoint < this.computerPoint) {
+					console.log("Computer takes it all!")
+				}
+
 		}
 
-		
-		// if(this.playerHand[0] > this.computerHand[0]) {
-		// 	console.log("Player Wins!");
-		// }
-		
-		// if(this.playerHand[0] < this.computerHand[0]) {
-		// 	console.log("Computer Wins!");
+	
+
+	
 };
 	
 
-	// round() {
-	// 	this.battle();
-	// 	this.battle();
-	// 	this.battle();
-	// },
-
-	// startGame() {
-	// 	this.dealCards();
-	// 	this.battle();
-	// 	this.round();
-	// }
 
 
 
