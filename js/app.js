@@ -20,15 +20,16 @@ const game = {
 	{name: "Weedle", damage:40}],
 		
 	playedCards: [],
-	computerPoints: [],
-	playerPoint: [],
-	roundsWonByPlayer: [],
-	currentRound: [],
+	computerPoint: 0,
+	playerPoint: 0,
+	roundsWonByPlayer: 0,
+	roundsWonByComputer: 0,
+	currentRound: 1,
 	computerHand: [],
 	playerHand: [],
 
 
-	dealCards() {
+	dealCards() { //had trouble calling let random from seperate deal cards function- scope issue
 		for (let i = 0; i < 3; i ++) { 
 			let randomNumber = Math.floor(Math.random() * this.cards.length);
 			let dealCard = this.cards.splice(randomNumber, 1)[0];
@@ -40,60 +41,59 @@ const game = {
 			let dealCard = this.cards.splice(randomNumber, 1)[0];
 			this.computerHand.push(dealCard);
 		};
-	}
+	},
+
+
+	battle() { // how to call on a function inside of a function?
+		console.log("the battle begins");
+		this.dealCards();
+			let playerCard = this.playerHand.splice(0, 1)[0];
+			console.log(playerCard);
+			let computerCard = this.computerHand.splice(0, 1)[0];
+			if (playerCard.damage > computerCard.damage) {
+				console.log("player wins!")
+				this.playerPoint ++;
+				console.log(this.playerPoint);
+			} else if (playerCard.damage < computerCard.damage) {
+				console.log("computer wins!")
+				this.computerPoint ++;
+				console.log(this.computerPoint);
+			};
+
+		}
+
+		
+		// if(this.playerHand[0] > this.computerHand[0]) {
+		// 	console.log("Player Wins!");
+		// }
+		
+		// if(this.playerHand[0] < this.computerHand[0]) {
+		// 	console.log("Computer Wins!");
 };
-
-game.dealCards();
-
-	// battle () {
-	// 	if()
-	// },
-				
 	
 
+	// round() {
+	// 	this.battle();
+	// 	this.battle();
+	// 	this.battle();
+	// },
 
-
-
-	// playerHand() {
-	// 	for(let i = 0; i < 3; i++) {
-	// 	this.playerHand.push(this.deal());
-	// 		}
-	// 		{console.log("players hand");}
-	// 		return this.playerHand;
-	// 		},
-
-	// computerHand() {
-	// 	for(let i = 0; i < 3; i++) {
-	// 	this.computerHand.push(this.deal());
-	// 		}
-	// 	return this.computerHand;
-	// 		},
-
-	// evaluateCard() {
-	// 	if playerHand[i] > computerHand[i] {
-	// 			console.log("Player Wins");
-	// 		}
-	// 	else { 
-	// 		console.log("Computer Wines");
-	// 		},
+	// startGame() {
+	// 	this.dealCards();
+	// 	this.battle();
+	// 	this.round();
 	// }
 
 
-// console.log(game.computerHand);	
 
+	
 				
-
 	
 
 
-				// remainingCardsAmount: cards.length
-				// playerPoints: sum
-				// computerPoints: sum
-				// rounds: [console.log("Winner!")]
 
 
 
-//starting a round will call players hands
 
 
 
